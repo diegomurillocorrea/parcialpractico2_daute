@@ -15,11 +15,11 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public int getId_categoria() {
+    public int getIdCategoria() {
         return idCategoria;
     }
 
-    public void setId_categoria(int idCategoria) {
+    public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
     }
 
