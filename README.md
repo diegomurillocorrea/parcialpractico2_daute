@@ -1,1 +1,0 @@
-# parcialpractico2_daute
