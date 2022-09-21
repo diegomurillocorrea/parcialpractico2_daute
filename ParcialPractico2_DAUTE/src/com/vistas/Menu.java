@@ -8,6 +8,7 @@ import com.conexion.Conexion;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
  * @author diegomurillo
@@ -17,6 +18,7 @@ public class Menu extends javax.swing.JFrame {
     FormAutor formAutor;
     FormCategoria formCategoria;
     FormLibro formLibro;
+    ReporteParametrizadoLibros formReporteParametrizadoLibros;
 
     /**
      * Creates new form Menu
@@ -45,6 +47,7 @@ public class Menu extends javax.swing.JFrame {
         menuAutor = new javax.swing.JMenuItem();
         menuReportes = new javax.swing.JMenu();
         menuReporteNoParametrizado = new javax.swing.JMenuItem();
+        menuReporteParametrizado = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -106,6 +109,16 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(menuCRUD);
 
         menuReportes.setText("Reportes");
+        menuReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuReportesMousePressed(evt);
+            }
+        });
+        menuReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuReportesActionPerformed(evt);
+            }
+        });
 
         menuReporteNoParametrizado.setText("No Parametrizado");
         menuReporteNoParametrizado.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +127,14 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         menuReportes.add(menuReporteNoParametrizado);
+
+        menuReporteParametrizado.setText("Parametrizado");
+        menuReporteParametrizado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuReporteParametrizadoMousePressed(evt);
+            }
+        });
+        menuReportes.add(menuReporteParametrizado);
 
         jMenuBar1.add(menuReportes);
 
@@ -178,6 +199,25 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuReporteNoParametrizadoActionPerformed
 
+    private void menuReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReportesActionPerformed
+
+    }//GEN-LAST:event_menuReportesActionPerformed
+
+    private void menuReportesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuReportesMousePressed
+
+    }//GEN-LAST:event_menuReportesMousePressed
+
+    private void menuReporteParametrizadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuReporteParametrizadoMousePressed
+        if (formReporteParametrizadoLibros == null || formReporteParametrizadoLibros.isClosed()) {
+            formReporteParametrizadoLibros = new ReporteParametrizadoLibros();
+            escritorio.add(formReporteParametrizadoLibros);
+            formReporteParametrizadoLibros.setVisible(true);
+        } else {
+            formReporteParametrizadoLibros.setVisible(true);
+        }
+        formReporteParametrizadoLibros.setLocation(10, 10);
+    }//GEN-LAST:event_menuReporteParametrizadoMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -223,6 +263,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCategoria;
     private javax.swing.JMenuItem menuLibro;
     private javax.swing.JMenuItem menuReporteNoParametrizado;
+    private javax.swing.JMenuItem menuReporteParametrizado;
     private javax.swing.JMenu menuReportes;
     private javax.swing.JMenu menuSalir;
     // End of variables declaration//GEN-END:variables
