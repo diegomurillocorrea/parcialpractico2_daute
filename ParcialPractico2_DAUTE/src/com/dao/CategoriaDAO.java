@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 
 public class CategoriaDAO extends Conexion {
 
-    public int insertarAutor(Categoria c) {
+    public int insertarCategoria(Categoria c) {
         int res = 0;
         try {
             this.conectar();
@@ -36,8 +36,9 @@ public class CategoriaDAO extends Conexion {
             ResultSet rs = pre.executeQuery();
             while (rs.next()) {
                 Categoria c = new Categoria();
-                c.setNombre(rs.getString(1));
-                c.setDescripcion(rs.getString(2));
+                c.setIdCategoria(rs.getInt(1));
+                c.setNombre(rs.getString(2));
+                c.setDescripcion(rs.getString(3));
                 lista.add(c);
             }
         } catch (SQLException e) {

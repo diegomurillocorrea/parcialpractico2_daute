@@ -11,6 +11,7 @@ package com.vistas;
 public class Menu extends javax.swing.JFrame {
 
     FormAutor formAutor;
+    FormCategoria formCategoria;
 
     /**
      * Creates new form Menu
@@ -70,6 +71,11 @@ public class Menu extends javax.swing.JFrame {
         menuCRUD.setText("CRUD");
 
         menuCategoria.setText("Categoria");
+        menuCategoria.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuCategoriaMousePressed(evt);
+            }
+        });
         menuCRUD.add(menuCategoria);
 
         menuLibro.setText("Libro");
@@ -114,6 +120,17 @@ public class Menu extends javax.swing.JFrame {
         }
         formAutor.setLocation(10, 10);
     }//GEN-LAST:event_menuAutorMousePressed
+
+    private void menuCategoriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuCategoriaMousePressed
+        if (formCategoria == null || formCategoria.isClosed()) {
+            formCategoria = new FormCategoria();
+            escritorio.add(formCategoria);
+            formCategoria.setVisible(true);
+        } else {
+            formCategoria.setVisible(true);
+        }
+        formCategoria.setLocation(10, 10);
+    }//GEN-LAST:event_menuCategoriaMousePressed
 
     /**
      * @param args the command line arguments
