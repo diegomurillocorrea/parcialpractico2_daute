@@ -2,33 +2,37 @@ package com.modelo;
 
 public class Libro {
 
-    private int id_libro;
+    private int idLibro;
     private String titulo;
     private String descripcion;
     private int stock;
     private int stockMinimo;
-    private int categoryId;
-    private int autorId;
+    private int codigoCategoria;
+    private String nombreCategoria;
+    private int codigoAutor;
+    private String nombreAutor;
 
     public Libro() {
     }
 
-    public Libro(int id_libro, String titulo, String descripcion, int stock, int stockMinimo, int categoryId, int autorId) {
-        this.id_libro = id_libro;
+    public Libro(int idLibro, String titulo, String descripcion, int stock, int stockMinimo, int codigoCategoria, String nombreCategoria, int codigoAutor, String nombreAutor) {
+        this.idLibro = idLibro;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.stock = stock;
         this.stockMinimo = stockMinimo;
-        this.categoryId = categoryId;
-        this.autorId = autorId;
+        this.codigoCategoria = codigoCategoria;
+        this.nombreCategoria = nombreCategoria;
+        this.codigoAutor = codigoAutor;
+        this.nombreAutor = nombreAutor;
     }
 
-    public int getId_libro() {
-        return id_libro;
+    public int getIdLibro() {
+        return idLibro;
     }
 
-    public void setId_libro(int id_libro) {
-        this.id_libro = id_libro;
+    public void setIdLibro(int idLibro) {
+        this.idLibro = idLibro;
     }
 
     public String getTitulo() {
@@ -63,19 +67,35 @@ public class Libro {
         this.stockMinimo = stockMinimo;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public int getCodigoCategoria() {
+        return codigoCategoria;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCodigoCategoria(int codigoCategoria) {
+        this.codigoCategoria = codigoCategoria;
     }
 
-    public int getAutorId() {
-        return autorId;
+    public String getNombreCategoria() {
+        return nombreCategoria;
     }
 
-    public void setAutorId(int autorId) {
-        this.autorId = autorId;
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
+    }
+
+    public int getCodigoAutor() {
+        return codigoAutor;
+    }
+
+    public void setCodigoAutor(int codigoAutor) {
+        this.codigoAutor = codigoAutor;
+    }
+
+    public String getNombreAutor() {
+        return nombreAutor;
+    }
+
+    public void setNombreAutor(String nombreAutor) {
+        this.nombreAutor = nombreAutor;
     }
 }

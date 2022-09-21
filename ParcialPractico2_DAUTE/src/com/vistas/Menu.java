@@ -12,6 +12,7 @@ public class Menu extends javax.swing.JFrame {
 
     FormAutor formAutor;
     FormCategoria formCategoria;
+    FormLibro formLibro;
 
     /**
      * Creates new form Menu
@@ -79,6 +80,11 @@ public class Menu extends javax.swing.JFrame {
         menuCRUD.add(menuCategoria);
 
         menuLibro.setText("Libro");
+        menuLibro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                menuLibroMousePressed(evt);
+            }
+        });
         menuCRUD.add(menuLibro);
 
         menuAutor.setText("Autor");
@@ -131,6 +137,17 @@ public class Menu extends javax.swing.JFrame {
         }
         formCategoria.setLocation(10, 10);
     }//GEN-LAST:event_menuCategoriaMousePressed
+
+    private void menuLibroMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuLibroMousePressed
+        if (formLibro == null || formLibro.isClosed()) {
+            formLibro = new FormLibro();
+            escritorio.add(formLibro);
+            formLibro.setVisible(true);
+        } else {
+            formLibro.setVisible(true);
+        }
+        formLibro.setLocation(10, 10);
+    }//GEN-LAST:event_menuLibroMousePressed
 
     /**
      * @param args the command line arguments
