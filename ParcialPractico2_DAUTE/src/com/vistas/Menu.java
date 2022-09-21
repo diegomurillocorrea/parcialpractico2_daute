@@ -4,6 +4,10 @@
  */
 package com.vistas;
 
+import com.conexion.Conexion;
+import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 /**
  *
  * @author diegomurillo
@@ -40,6 +44,7 @@ public class Menu extends javax.swing.JFrame {
         menuLibro = new javax.swing.JMenuItem();
         menuAutor = new javax.swing.JMenuItem();
         menuReportes = new javax.swing.JMenu();
+        menuReporteNoParametrizado = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -101,6 +106,15 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(menuCRUD);
 
         menuReportes.setText("Reportes");
+
+        menuReporteNoParametrizado.setText("No Parametrizado");
+        menuReporteNoParametrizado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuReporteNoParametrizadoActionPerformed(evt);
+            }
+        });
+        menuReportes.add(menuReporteNoParametrizado);
+
         jMenuBar1.add(menuReportes);
 
         setJMenuBar(jMenuBar1);
@@ -149,6 +163,21 @@ public class Menu extends javax.swing.JFrame {
         formLibro.setLocation(10, 10);
     }//GEN-LAST:event_menuLibroMousePressed
 
+    private void menuReporteNoParametrizadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReporteNoParametrizadoActionPerformed
+        Conexion obj = new Conexion();
+        JasperReport reporte;
+        try {
+            obj.conectar();
+            reporte = JasperCompileManager.compileReport("src/com/reportes/reporte_no_parametrizado_libros.jrxml");
+            JasperPrint jp = JasperFillManager.fillReport(reporte, null, obj.getCon());
+            JasperViewer.viewReport(jp, false);
+        } catch (JRException e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error: " + e.getMessage());
+        } finally {
+            obj.desconectar();
+        }
+    }//GEN-LAST:event_menuReporteNoParametrizadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -193,6 +222,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu menuCRUD;
     private javax.swing.JMenuItem menuCategoria;
     private javax.swing.JMenuItem menuLibro;
+    private javax.swing.JMenuItem menuReporteNoParametrizado;
     private javax.swing.JMenu menuReportes;
     private javax.swing.JMenu menuSalir;
     // End of variables declaration//GEN-END:variables

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ed2917e-0032-457a-9ef1-368675ec7581">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT l.titulo, l.description, l.stock, l.stock_minimo, c.nombre as categoryName, a.nombre as autorName FROM libro l INNER JOIN categoria c on l.category_id = c.id_category INNER JOIN autor a on a.id_autor = l.autor_id GROUP BY c.nombre;]]>
+	</queryString>
+	<field name="titulo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stock" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stock_minimo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="categoryName" class="java.lang.String"/>
+	<field name="autorName" class="java.lang.String"/>
+	<group name="categoryName">
+		<groupExpression><![CDATA[$F{categoryName}]]></groupExpression>
+		<groupHeader>
+			<band height="16">
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="6bd6bc61-4bd7-4487-8ea8-48fedda8b720"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+				<textField>
+					<reportElement style="Detail" x="0" y="0" width="74" height="15" uuid="368de89d-7424-43e3-8172-5ec5a1b8c807"/>
+					<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="74" y="1" width="175" height="15" uuid="5123864e-337b-4c8c-9aa8-ab84dc54c57f"/>
+					<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="249" y="1" width="49" height="15" uuid="ebfd1611-7203-4fb0-ad36-62f7c0c61391"/>
+					<textFieldExpression><![CDATA[$F{stock}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="298" y="1" width="99" height="15" uuid="f22aa632-dd04-49ec-af09-ab054bc7ba15"/>
+					<textFieldExpression><![CDATA[$F{stock_minimo}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="476" y="1" width="77" height="15" uuid="bb617ac9-1339-4f4b-a260-65aab7aba3da"/>
+					<textFieldExpression><![CDATA[$F{autorName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Detail" x="402" y="1" width="74" height="15" uuid="c8310f57-8de6-439a-abd4-e8d4dbfd67bc"/>
+					<textFieldExpression><![CDATA[$F{autorName}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="1"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="333" height="33" uuid="81ebbde6-b6e6-422b-84f7-8cb146af5d9e"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Reporte Libros | Biblioteca]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="159" y="33" width="174" height="22" uuid="ff8f92ad-2fbf-436a-b1aa-20533e925242"/>
+				<text><![CDATA[No Parametrizado]]></text>
+			</staticText>
+			<image>
+				<reportElement x="454" y="0" width="136" height="89" uuid="d3969349-c9b5-4a24-8ea2-3a0a1828db2c"/>
+				<imageExpression><![CDATA["C:\\Users\\diegomurillo\\OneDrive - Escuela Especializada en Ingeniería ITCA-FEPADE\\Escritorio\\DAUTE\\Practica\\Semana 8\\parcialpractico2_daute\\parcialpractico2_daute\\ParcialPractico2_DAUTE\\src\\com\\reportes\\biblioteca.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="b13f0a3c-8cb6-43df-8582-085bc1d195e9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="74" height="15" uuid="b98b1c4e-573c-45e3-9830-3b0754702daf"/>
+				<text><![CDATA[Titulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="74" y="20" width="175" height="15" uuid="66b03a00-4473-4815-9bdf-d6cb2cf79769"/>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="249" y="20" width="49" height="15" uuid="f3a8ce86-c4ae-4467-a899-1d3381ab9507"/>
+				<text><![CDATA[Stock]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="298" y="20" width="99" height="15" uuid="d5b1d300-7187-4fea-aa90-b74f8dd63ec3"/>
+				<text><![CDATA[Stock Minimo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="397" y="19" width="79" height="15" uuid="d208e030-520b-4c66-bf3d-1072cef4e240"/>
+				<text><![CDATA[Categoria]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="476" y="19" width="79" height="15" uuid="29917ee3-76d1-4b4c-9b98-b520d34d7cd2"/>
+				<text><![CDATA[Autor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="dba64bfc-edbf-4a6d-906d-fbc29de60b60"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="0f2f44e2-4fb7-4e9b-a2d4-d1e3888fddc8"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="ec47991f-85e9-4d55-b104-9e2582a4d567"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
