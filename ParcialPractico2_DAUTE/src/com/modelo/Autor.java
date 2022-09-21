@@ -2,7 +2,7 @@ package com.modelo;
 
 public class Autor {
 
-    private int idAutor;
+    private int id_autor;
     private String nombre;
     private String apellido;
     private String nacionalidad;
@@ -10,19 +10,19 @@ public class Autor {
     public Autor() {
     }
 
-    public Autor(int idAutor, String nombre, String apellido, String nacionalidad) {
-        this.idAutor = idAutor;
+    public Autor(int id_autor, String nombre, String apellido, String nacionalidad) {
+        this.id_autor = id_autor;
         this.nombre = nombre;
         this.apellido = apellido;
         this.nacionalidad = nacionalidad;
     }
 
-    public int getIdAutor() {
-        return idAutor;
+    public int getId_autor() {
+        return id_autor;
     }
 
-    public void setIdAutor(int idAutor) {
-        this.idAutor = idAutor;
+    public void setId_autor(int id_autor) {
+        this.id_autor = id_autor;
     }
 
     public String getNombre() {

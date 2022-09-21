@@ -1,88 +1,89 @@
 package com.dao;
 
-import com.modelo.Autor;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import com.conexion.Conexion;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import com.modelo.Autor;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class AutorDAO extends Conexion {
 
-    public int insertarAutor(Autor a) {
+    public int insertarAutor(Autor p) {
         int res = 0;
         try {
             this.conectar();
-            String sql = "INSERT INTO autor(nombre, apellido, nacionalidad) VALUES(?, ?, ?)";
+            String sql = "INSERT INTO autor(nombre, apellido, nacionalidad) VALUES(?,?,?)";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
-            pre.setString(1, a.getNombre());
-            pre.setString(2, a.getApellido());
-            pre.setString(3, a.getNacionalidad());
+            pre.setString(1, p.getNombre());
+            pre.setString(2, p.getApellido());
+            pre.setString(3, p.getNacionalidad());
             res = pre.executeUpdate();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al insertar autor: " + e.getMessage());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al agregar registro " + e.getMessage());
         } finally {
             this.desconectar();
         }
         return res;
     }
 
-    public ArrayList<Autor> mostrarAutores() {
-        ArrayList<Autor> lista = new ArrayList<>();
+    public ArrayList<Autor> mostrarAutor() {
+        ArrayList<Autor> listAutores = new ArrayList<>();
         try {
             this.conectar();
             String sql = "SELECT * FROM autor";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
             ResultSet rs = pre.executeQuery();
             while (rs.next()) {
-                Autor a = new Autor();
-                a.setIdAutor(rs.getInt(1));
-                a.setNombre(rs.getString(2));
-                a.setApellido(rs.getString(3));
-                a.setNacionalidad(rs.getString(4));
-                lista.add(a);
+                Autor p = new Autor();
+                p.setId_autor(rs.getInt(1));
+                p.setNombre(rs.getString("nombre"));
+                p.setApellido(rs.getString("apellido"));
+                p.setNacionalidad(rs.getString("nacionalidad"));
+                listAutores.add(p);
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al mostrar datos: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al extraer los registros " + e.getMessage());
         } finally {
             this.desconectar();
         }
-        return lista;
+        return listAutores;
     }
 
-    public int modificarAutor(Autor a) {
+    public int modificarAutor(Autor p) {
         int res = 0;
         try {
             this.conectar();
-            String sql = "UPDATE autor SET nombre = ?, apellido = ?, nacionalidad = ? WHERE id_autor = ?";
+            String sql = "UPDATE autor SET nombre=?, apellido=?, nacionalidad=? WHERE id_autor=?";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
-            pre.setString(1, a.getNombre());
-            pre.setString(2, a.getApellido());
-            pre.setString(3, a.getNacionalidad());
-            pre.setInt(4, a.getIdAutor());
+            pre.setString(1, p.getNombre());
+            pre.setString(2, p.getApellido());
+            pre.setString(3, p.getNacionalidad());
+            pre.setInt(4, p.getId_autor());
             res = pre.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al modificar autor: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al modificar " + e.getMessage());
         } finally {
             this.desconectar();
         }
         return res;
     }
 
-    public int eliminarAutor(Autor a) {
+    public int eliminarAutor(Autor p) {
         int res = 0;
         try {
             this.conectar();
-            String sql = "DELETE FROM autor WHERE id_autor = ?";
+            String sql = "DELETE FROM autor WHERE id_autor=?";
             PreparedStatement pre = this.getCon().prepareStatement(sql);
-            pre.setInt(1, a.getIdAutor());
+            pre.setInt(1, p.getId_autor());
             res = pre.executeUpdate();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al eliminar autor: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al eliminar " + e.getMessage());
         } finally {
             this.desconectar();
         }
         return res;
     }
+
 }
